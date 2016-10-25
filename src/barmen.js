@@ -5,7 +5,9 @@ module.exports= {
         this.check_age = function(age){
             return age > 18 ? true:false;
         };
-
+        this.check_warehouse = function(){
+            return 'checked';
+        };
         this.pour = function(drinkName, volume, client) {
             if (volume < 0) {
                 throw new Error('Invalid volume of whisky');
@@ -16,6 +18,7 @@ module.exports= {
             }
 
             if(!cupboard.hasDrink(drinkName, volume)){
+                this.check_warehouse();
                 throw new Error('Not enough ' + drinkName);
             }
 

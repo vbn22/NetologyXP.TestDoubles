@@ -37,9 +37,7 @@ suite('Mock: when client ask 200 grams of whisky', function () {
         test('Barman check age and resolution of client',function () {
             barmanMock.expects('check_age').once().returns(true);
 
-            let clientAskValume = 200;
             barman.check_age(20);
-            barman.pour(drinkName,clientAskValume,client);
 
             barmanMock.restore();
             barmanMock.verify();
@@ -48,8 +46,35 @@ suite('Mock: when client ask 200 grams of whisky', function () {
     });
 
     suite('no whisky in bar', function () {
-        //test('barman send SMS to the boss', function () {
-        //});
+        let cupboard = {
+            hasDrink: function(){
+                return false;
+            },
+            getDrink: function(){
+                return 0;
+            }
+        }
+        let barman;
+        let barmanMock;
+
+        setup(function(){
+            barman = new Barman(cupboard);
+            barmanMock = sinon.mock(barman);
+        })
+
+        test('Barman check warehouse',function () {
+            barmanMock.expects('check_warehouse').once();
+
+            let clientAskValume = 200;
+            assert.throws(function () {
+                barman.pour(drinkName,clientAskValume,client)
+            },/Not enough whisky/)
+
+            barmanMock.restore();
+            barmanMock.verify();
+
+        })
+
     });
 
     teardown(function() {
