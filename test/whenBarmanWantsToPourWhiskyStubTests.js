@@ -44,6 +44,7 @@ suite('Stub: when client ask 200 grams of whisky', function () {
         })
     });
 
+    
 
     teardown(function() {
         console.log('teardown');
