@@ -12,9 +12,8 @@ suite('Mock: when client ask 200 grams of whisky', function () {
     });
 
     suite('no whisky in bar', function () {
-        test('barman send SMS to the boss', function () {
-
-        });
+        //test('barman send SMS to the boss', function () {
+        //});
     });
 
     teardown(function() {

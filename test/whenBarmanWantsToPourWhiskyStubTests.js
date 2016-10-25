@@ -4,7 +4,11 @@ import { Client} from '../src/client'
 
 
 suite('Stub: when client ask 200 grams of whisky', function () {
-
+    var client = new Client();
+    let drinkName = 'whisky';
+    setup(function(){
+        client.sober();
+    })
     suite('barman has enough', function () {
 
     });
