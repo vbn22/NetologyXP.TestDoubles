@@ -35,10 +35,8 @@ suite('Stub: when client ask 200 grams of whisky', function () {
             }
         }
     }
+    let barman = new Barman(cupboardFake);
     suite('barman has enough', function () {
-
-        let barman = new Barman(cupboardFake);
-
         test('Bar is open',function(){
             assert.equal(true,cupboardFake.isOpen(12));
         })
@@ -50,8 +48,13 @@ suite('Stub: when client ask 200 grams of whisky', function () {
         })
     });
 
-    suite('no whisky in bar', function () {
-
+    suite('Types of drinks in bar', function () {
+        test('cocktail is not',function(){
+            assert.equal(false,cupboardFake.hasDrink('cocktail',100));
+        })
+        test('whisky',function(){
+            assert.equal(true,cupboardFake.hasDrink('whisky',100));
+        })
     });
 
 
