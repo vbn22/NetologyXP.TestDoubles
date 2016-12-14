@@ -6,7 +6,7 @@ import { Barman } from '../src/barmen'
 import { Client} from '../src/client'
 
 
-suite('Stub: when client ask 200 grams of whisky', function () {
+suite('Stub: when barmen wants to pour whisky', function () {
     var client = new Client();
     let drinkName = 'whisky';
     setup(function(){
@@ -36,8 +36,8 @@ suite('Stub: when client ask 200 grams of whisky', function () {
         }
     }
     let barman = new Barman(cupboardFake);
-    suite('barman has enough', function () {
-        test('Bar is open',function(){
+    suite('When barman has enough', function () {
+        test('If hour is 12 bar is open',function(){
             assert.equal(true,cupboardFake.isOpen(12));
         })
 
@@ -48,11 +48,11 @@ suite('Stub: when client ask 200 grams of whisky', function () {
         })
     });
 
-    suite('Types of drinks in bar', function () {
-        test('cocktail is not',function(){
+    suite('When barmen wants to pour different drinks', function () {
+        test('no cocktail in the bar',function(){
             assert.equal(false,cupboardFake.hasDrink('cocktail',100));
         })
-        test('whisky',function(){
+        test('whisky has in the bar',function(){
             assert.equal(true,cupboardFake.hasDrink('whisky',100));
         })
     });
